@@ -8,11 +8,11 @@ public class ContactAddressBook {
 	String city;
 	String state;
 	int zipcode;
-	int phonenum;
+	String phonenum;
 	String email;
 	
 	ContactAddressBook(String firstname, String lastname, String address, 
-						String city, String state, int zipcode, int phonenum, 
+						String city, String state, int zipcode, String phonenum, 
 						String email){
 		this.firstname = firstname;
 		this.lastname = lastname;
