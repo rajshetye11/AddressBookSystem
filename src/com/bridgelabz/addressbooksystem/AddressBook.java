@@ -27,7 +27,7 @@ public class AddressBook {
 		String email= sc.next();	
 		
 		arr[i]= new ContactAddressBook(firstname,lastname,address,city,state,zipcode,phonenum,email);
-		System.out.println("Contact added Successfully");
+		System.out.println("Contact created Successfully");
 		System.out.println(arr[i]);
 		
 		
@@ -45,7 +45,5 @@ public static void main(String[] args) {
 	System.out.println("Welcome To Address Book Program");
 	AddressBook ab= new AddressBook();
 	ab.addContact();
-	System.out.println("Thankyou");
-	
 }
 }
