@@ -74,13 +74,47 @@ public class AddressBook {
 	    	}
 	 }
 
+	 public void deleteContact() {
+	    	Scanner sc = new Scanner(System.in);
+	    	System.out.println("Enter First Name to delete that entry from Contact Books ");
+	    	String name = sc.next();
+	    	for (int j=0; j < arr.length; j++) {
+	        	if(name.equals(arr[j].firstname)){
+	                arr[j]=null;
+	        	}
+	    	}
+	 }
+
+	 
 public static void main(String[] args) {
 
 	System.out.println("Welcome To Address Book Program");
 	AddressBook ab= new AddressBook();
-	ab.addContact();
-	ab.showContact();
-	ab.editContact();
-	ab.showContact();
+	Scanner sc = new Scanner(System.in);
+	int count = 0;
+	while(count == 0)
+	{
+		System.out.println("Enter Choice: ");
+		System.out.println("1. Add Contact ; 2. Edit Contact ; 3. Delete Contact ; 4. Show Contacts 5. Exit: ");
+		int choice = sc.nextInt();
+		switch(choice) {
+		case 1:
+			ab.addContact();
+			break;
+		case 2:
+			ab.editContact();
+			break;
+		case 3:
+			ab.deleteContact();
+			break;
+		case 4:
+			ab.showContact();
+			break;
+		case 5:
+			count = 1;
+			break;
+	}
+	}
+	
 }
 }
