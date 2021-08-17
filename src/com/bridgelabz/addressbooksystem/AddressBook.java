@@ -113,6 +113,9 @@ public static void main(String[] args) {
 		case 5:
 			count = 1;
 			break;
+		default:
+			System.out.println("Enter Correct Choice");
+			break;
 	}
 	}
 	
