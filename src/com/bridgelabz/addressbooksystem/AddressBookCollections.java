@@ -7,7 +7,19 @@ import java.util.Scanner;
 public class AddressBookCollections {
 	
 	public int i=0;
+//	String firstname;
 	public LinkedList<ContactAddressBook> cab = new LinkedList<ContactAddressBook>();
+	
+	
+	public int checkDuplicate(String firstname) {
+		for (int i=0;i<cab.size();i++) {
+			if(firstname.equals(cab.get(i).firstname)) {
+				return 1;
+			}
+		}
+		return 0;
+	}
+	
 	
 	public void addContact() 
 	{	
@@ -32,10 +44,13 @@ public class AddressBookCollections {
 		System.out.println("Enter Email id : ");
 		String email= sc.next();	
 		
+		if(checkDuplicate(firstname)== 1) {
+			System.out.println("Sorry Name Already Exits");
+		}else {
 		ContactAddressBook addressBookCollections = new ContactAddressBook(firstname,lastname,address,city,state,zipcode,phonenum,email);
 		cab.add(addressBookCollections);
 		System.out.println("Contact created Successfully");
-	}	
+	}	}
 }
 	
 	
