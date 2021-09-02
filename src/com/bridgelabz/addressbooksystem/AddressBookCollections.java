@@ -7,7 +7,6 @@ import java.util.Scanner;
 public class AddressBookCollections {
 	
 	public int i=0;
-//	String firstname;
 	public LinkedList<ContactAddressBook> cab = new LinkedList<ContactAddressBook>();
 	
 	
@@ -20,7 +19,30 @@ public class AddressBookCollections {
 		return 0;
 	}
 	
+	public void searchCity() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter City: ");
+		String city = sc.nextLine();
+		
+		for(int i =0;i<cab.size();i++) {
+			if(city.equals(cab.get(i).city)) {
+				System.out.println(cab.get(i).firstname);
+			}
+		}
+	}
 	
+	
+	public void searchState() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter state: ");
+		String state = sc.nextLine();
+		
+		for(int i =0;i<cab.size();i++) {
+			if(state.equals(cab.get(i).state)) {
+				System.out.println(cab.get(i).firstname);
+			}
+		}
+	}
 	public void addContact() 
 	{	
 		Scanner sc = new Scanner(System.in);
@@ -110,7 +132,7 @@ public static void main(String[] args) {
 	while(count == 0)
 	{
 		System.out.println("Enter Choice: ");
-		System.out.println("1. Add Contact ; 2. Edit Contact ; 3. Delete Contact ; 4. Show Contacts 5. Exit: ");
+		System.out.println("1. Add Contact , 2. Edit Contact , 3. Delete Contact , 4. Show Contacts , 5. Search By City  , 6. Search By State ,  7. Exit");
 		int choice = sc.nextInt();
 		switch(choice) {
 		case 1:
@@ -126,6 +148,12 @@ public static void main(String[] args) {
 			ab.showContact();
 			break;
 		case 5:
+			ab.searchCity();
+			break;
+		case 6:
+			ab.searchState();
+			break;
+		case 7:
 			count = 1;
 			break;
 		default:
