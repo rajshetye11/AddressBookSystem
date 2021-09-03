@@ -43,6 +43,31 @@ public class AddressBookCollections {
 			}
 		}
 	}
+	
+	public void viewPersons() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter City or State: ");
+		String city = sc.nextLine();
+		System.out.println("For City 1 and 2 for state");
+		int state = sc.nextInt();
+		
+		if(state == 1){
+			for(int i =0;i<cab.size();i++) {
+				if(city.equals(cab.get(i).city)) {
+					System.out.println(cab.get(i).firstname);
+				}
+			}
+		}else {
+			for(int i =0;i<cab.size();i++) {
+				if(city.equals(cab.get(i).state)) {
+					System.out.println(cab.get(i).firstname);
+				}
+			}
+		}
+		
+	}
+
+	
 	public void addContact() 
 	{	
 		Scanner sc = new Scanner(System.in);
@@ -132,7 +157,7 @@ public static void main(String[] args) {
 	while(count == 0)
 	{
 		System.out.println("Enter Choice: ");
-		System.out.println("1. Add Contact , 2. Edit Contact , 3. Delete Contact , 4. Show Contacts , 5. Search By City  , 6. Search By State ,  7. Exit");
+		System.out.println("1. Add Contact , 2. Edit Contact , 3. Delete Contact , 4. Show Contacts , 5. Search By City  , 6. Search By State ,  7. View Persons  ,  8. Exit");
 		int choice = sc.nextInt();
 		switch(choice) {
 		case 1:
@@ -153,9 +178,13 @@ public static void main(String[] args) {
 		case 6:
 			ab.searchState();
 			break;
-		case 7:
+		case 7 : 
+			ab.viewPersons();
+			break;
+		case 8:
 			count = 1;
 			break;
+		
 		default:
 			System.out.println("Enter Correct Choice");
 			break;
