@@ -44,6 +44,23 @@ public class AddressBookCollections {
 		}
 	}
 	
+	public void countPersons() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter State Name");
+		String stet = sc.nextLine();
+		
+		int count =0;		
+		for(int i =0;i<cab.size();i++) {
+			if(stet.equals(cab.get(i).state)) {
+				count++;
+				
+			}
+			
+			}
+		System.out.println(count); 
+		}
+
+	
 	public void viewPersons() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter City or State: ");
@@ -157,7 +174,7 @@ public static void main(String[] args) {
 	while(count == 0)
 	{
 		System.out.println("Enter Choice: ");
-		System.out.println("1. Add Contact , 2. Edit Contact , 3. Delete Contact , 4. Show Contacts , 5. Search By City  , 6. Search By State ,  7. View Persons  ,  8. Exit");
+		System.out.println("1. Add Contact , 2. Edit Contact , 3. Delete Contact , 4. Show Contacts , 5. Search By City  , 6. Search By State ,  7. View Persons  ,8. Count Persons,   9. Exit");
 		int choice = sc.nextInt();
 		switch(choice) {
 		case 1:
@@ -181,7 +198,10 @@ public static void main(String[] args) {
 		case 7 : 
 			ab.viewPersons();
 			break;
-		case 8:
+		case 8: 
+			ab.countPersons();
+			break;
+		case 9:
 			count = 1;
 			break;
 		
