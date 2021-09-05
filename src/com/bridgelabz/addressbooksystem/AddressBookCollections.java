@@ -1,5 +1,6 @@
 package com.bridgelabz.addressbooksystem;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Scanner;
@@ -11,12 +12,16 @@ public class AddressBookCollections {
 	
 	
 	public int checkDuplicate(String firstname) {
+		ArrayList<String> cDuplicate = new ArrayList<String>();
 		for (int i=0;i<cab.size();i++) {
-			if(firstname.equals(cab.get(i).firstname)) {
-				return 1;
-			}
+//			if(firstname.equals(cab.get(i).firstname)) {
+//				return 1;
+//			}
+			cDuplicate.add(cab.get(i).firstname);
 		}
-		return 0;
+		
+		if (cDuplicate.stream().anyMatch(n -> firstname.equals(n))) return 1;
+			return 0;
 	}
 	
 	public void searchCity() {
