@@ -89,17 +89,34 @@ public class AddressBookCollections {
 		int state = sc.nextInt();
 		
 		if(state == 1){
-			for(int i =0;i<cab.size();i++) {
-				if(city.equals(cab.get(i).city)) {
-					System.out.println(cab.get(i).firstname);
+//			for(int i =0;i<cab.size();i++) {
+//				if(city.equals(cab.get(i).city)) {
+//					System.out.println(cab.get(i).firstname);
+//				}
+//			}
+			cab.stream().forEach(n->{
+				for(int i =0;i<cab.size();i++) {
+					if(cab.get(i).city.equals(city))
+						{
+							System.out.println(cab.get(i).firstname);
+						}
 				}
-			}
+			});
 		}else {
-			for(int i =0;i<cab.size();i++) {
-				if(city.equals(cab.get(i).state)) {
-					System.out.println(cab.get(i).firstname);
+//			for(int i =0;i<cab.size();i++) {
+//				if(city.equals(cab.get(i).state)) {
+//					System.out.println(cab.get(i).firstname);
+//				}
+//			}
+//			
+			cab.stream().forEach(n->{
+				for(int i =0;i<cab.size();i++) {
+					if(cab.get(i).state.equals(city))
+						{
+							System.out.println(cab.get(i).firstname);
+						}
 				}
-			}
+			});
 		}
 		
 	}
