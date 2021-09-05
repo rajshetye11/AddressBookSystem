@@ -2,14 +2,19 @@ package com.bridgelabz.addressbooksystem;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Map;
 import java.util.Scanner;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class AddressBookCollections {
 	
 	public int i=0;
 	public LinkedList<ContactAddressBook> cab = new LinkedList<ContactAddressBook>();
-	
+	public HashMap<String, String> personCity = new HashMap<String, String>();
+    public HashMap<String, String> personState = new HashMap<String, String>();
 	
 	public int checkDuplicate(String firstname) {
 		ArrayList<String> cDuplicate = new ArrayList<String>();
@@ -68,16 +73,12 @@ public class AddressBookCollections {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter State Name");
 		String stet = sc.nextLine();
-		
-		int count =0;		
-		for(int i =0;i<cab.size();i++) {
-			if(stet.equals(cab.get(i).state)) {
-				count++;
-				
-			}
-			
-			}
-		System.out.println(count); 
+					
+		Map<String, Long> count1 = personState.values().stream().collect(Collectors.groupingBy(Function.identity(),
+                Collectors.counting()));
+		count1.keySet().stream().forEach(n->{
+			System.out.println(count1.get(n));
+		});
 		}
 
 	
@@ -150,6 +151,9 @@ public class AddressBookCollections {
 		}else {
 		ContactAddressBook addressBookCollections = new ContactAddressBook(firstname,lastname,address,city,state,zipcode,phonenum,email);
 		cab.add(addressBookCollections);
+		String value1 = firstname+ " " + lastname;
+		personCity.put(value1, city);
+        personState.put(value1, state);
 		System.out.println("Contact created Successfully");
 	}	}
 }
