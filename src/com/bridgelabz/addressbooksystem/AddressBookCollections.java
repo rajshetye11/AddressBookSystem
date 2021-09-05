@@ -27,26 +27,41 @@ public class AddressBookCollections {
 	public void searchCity() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter City: ");
-		String city = sc.nextLine();
+		String cityName = sc.nextLine();
 		
-		for(int i =0;i<cab.size();i++) {
-			if(city.equals(cab.get(i).city)) {
-				System.out.println(cab.get(i).firstname);
+//		for(int i =0;i<cab.size();i++) {
+//			if(cityName.equals(cab.get(i).city)) {
+//				System.out.println(cab.get(i).firstname);
+//			}
+//		}			
+		
+		cab.stream().forEach(n -> {
+			for(int i =0;i<cab.size();i++) {
+				if(cab.get(i).city.equals(cityName)) System.out.println(cab.get(i).firstname);
 			}
-		}
+		});
 	}
 	
 	
 	public void searchState() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter state: ");
-		String state = sc.nextLine();
+		String stateName = sc.nextLine();
 		
-		for(int i =0;i<cab.size();i++) {
-			if(state.equals(cab.get(i).state)) {
-				System.out.println(cab.get(i).firstname);
+//		for(int i =0;i<cab.size();i++) {
+//			if(stateName.equals(cab.get(i).state)) {
+//				System.out.println(cab.get(i).firstname);
+//			}
+//		}
+		
+		cab.stream().forEach(n -> {
+			for(int i =0;i<cab.size();i++) {
+				if(cab.get(i).state.equals(stateName))
+					{
+						System.out.println(cab.get(i).firstname);
+					}
 			}
-		}
+		});
 	}
 	
 	public void countPersons() {
