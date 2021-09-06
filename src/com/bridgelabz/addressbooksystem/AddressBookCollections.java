@@ -2,20 +2,35 @@ package com.bridgelabz.addressbooksystem;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
+
 import java.util.Scanner;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+
 public class AddressBookCollections {
 	
 	public int i=0;
-	public LinkedList<ContactAddressBook> cab = new LinkedList<ContactAddressBook>();
+	public List<ContactAddressBook> cab = new LinkedList<ContactAddressBook>();
 	public HashMap<String, String> personCity = new HashMap<String, String>();
     public HashMap<String, String> personState = new HashMap<String, String>();
 	
+	public void sortByNames()
+	{
+		List<ContactAddressBook> names = cab.stream().sorted(Comparator.comparing(ContactAddressBook::getFirstname))
+				.collect(Collectors.toList());
+		names.forEach(System.out::println);
+	}
+	
+	
+    
+    
 	public int checkDuplicate(String firstname) {
 		ArrayList<String> cDuplicate = new ArrayList<String>();
 		for (int i=0;i<cab.size();i++) {
@@ -159,8 +174,7 @@ public class AddressBookCollections {
 }
 	
 	
-	
-	
+
 	 public void showContact(){
 	      	for (int i=0; i < cab.size(); i++) {
 	      		System.out.println(cab.get(i));
@@ -215,7 +229,7 @@ public static void main(String[] args) {
 	while(count == 0)
 	{
 		System.out.println("Enter Choice: ");
-		System.out.println("1. Add Contact , 2. Edit Contact , 3. Delete Contact , 4. Show Contacts , 5. Search By City  , 6. Search By State ,  7. View Persons  ,8. Count Persons,   9. Exit");
+		System.out.println("1. Add Contact , 2. Edit Contact , 3. Delete Contact , 4. Show Contacts , 5. Search By City  , 6. Search By State ,  7. View Persons  ,8. Count Persons, 9. Sort By Names ,   10. Exit");
 		int choice = sc.nextInt();
 		switch(choice) {
 		case 1:
@@ -243,9 +257,11 @@ public static void main(String[] args) {
 			ab.countPersons();
 			break;
 		case 9:
+			ab.sortByNames();
+			break;
+		case 10 :
 			count = 1;
 			break;
-		
 		default:
 			System.out.println("Enter Correct Choice");
 			break;
