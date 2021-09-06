@@ -29,7 +29,33 @@ public class AddressBookCollections {
 	}
 	
 	
-    
+	public void sortByCityStateZip() {
+		System.out.println(" Enter to Sort by 1.city, 2.state, 3.Zipcode");
+		Scanner sc = new Scanner(System.in);
+		int choice = sc.nextInt();
+		switch (choice) {
+
+		case 1:
+			List<ContactAddressBook> cityList = cab.stream().sorted(Comparator.comparing(ContactAddressBook::getCity))
+					.collect(Collectors.toList());
+			cityList.forEach(System.out::println);
+			break;
+		case 2:
+
+			List<ContactAddressBook> stateList = cab.stream().sorted(Comparator.comparing(ContactAddressBook::getState))
+					.collect(Collectors.toList());
+			stateList.forEach(System.out::println);
+			break;
+		case 3:
+			List<ContactAddressBook> zipcodeList = cab.stream().sorted(Comparator.comparing(ContactAddressBook::getZipcode))
+					.collect(Collectors.toList());
+			zipcodeList.forEach(System.out::println);
+			break;
+		default:
+			System.out.println("Please Choose Correct Number");
+			break;
+		}
+	}
     
 	public int checkDuplicate(String firstname) {
 		ArrayList<String> cDuplicate = new ArrayList<String>();
@@ -229,7 +255,7 @@ public static void main(String[] args) {
 	while(count == 0)
 	{
 		System.out.println("Enter Choice: ");
-		System.out.println("1. Add Contact , 2. Edit Contact , 3. Delete Contact , 4. Show Contacts , 5. Search By City  , 6. Search By State ,  7. View Persons  ,8. Count Persons, 9. Sort By Names ,   10. Exit");
+		System.out.println("1. Add Contact , 2. Edit Contact , 3. Delete Contact , 4. Show Contacts , 5. Search By City  , 6. Search By State ,  7. View Persons  ,8. Count Persons, 9. Sort By Names , 10. Sort By City , State Or Zip  ,  11. Exit");
 		int choice = sc.nextInt();
 		switch(choice) {
 		case 1:
@@ -259,7 +285,10 @@ public static void main(String[] args) {
 		case 9:
 			ab.sortByNames();
 			break;
-		case 10 :
+		case 10:
+			ab.sortByCityStateZip();
+			break;
+		case 11 :
 			count = 1;
 			break;
 		default:
