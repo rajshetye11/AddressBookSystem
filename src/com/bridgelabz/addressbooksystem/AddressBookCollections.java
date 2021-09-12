@@ -1,5 +1,9 @@
 package com.bridgelabz.addressbooksystem;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -20,6 +24,7 @@ public class AddressBookCollections {
 	public List<ContactAddressBook> cab = new LinkedList<ContactAddressBook>();
 	public HashMap<String, String> personCity = new HashMap<String, String>();
     public HashMap<String, String> personState = new HashMap<String, String>();
+    public static String PathName = "file.txt";
 	
 	public void sortByNames()
 	{
@@ -246,6 +251,47 @@ public class AddressBookCollections {
 	 }
 
 	 
+	 public void writeAddressBookData(IOService IOService) {
+			if (IOService.equals(IOService.CONSOLE_IO)) {
+				System.out.println(cab);
+			} else if (IOService.equals(IOService.FILE_IO)) {
+
+				new AddressBookIOService().writeData(cab);
+			}
+		}
+
+	 public void readFile(Scanner sc,AddressBookCollections addressbook)  {
+			
+			System.out.println("Enter First Name");
+			String firstname = sc.next();
+
+			System.out.println("Enter Last Name");
+			String lastname = sc.next();
+
+			System.out.println("Enter Address");
+			String address = sc.next();
+
+			System.out.println("Enter City");
+			String city = sc.next();
+
+			System.out.println("Enter State");
+			String state = sc.next();
+
+			System.out.println("Enter Zip");
+			int zipcode = sc.nextInt();
+
+			System.out.println("Enter Phone number");
+			String phonenum = sc.next();
+
+			System.out.println("Enter EmailId");
+			String email = sc.next();
+
+			ContactAddressBook addressBookCollections = new ContactAddressBook(firstname,lastname,address,city,state,zipcode,phonenum,email);
+			cab.add(addressBookCollections);
+
+		}
+	 
+	 
 public static void main(String[] args) {
 
 	System.out.println("Welcome To Address Book Program");
@@ -255,7 +301,7 @@ public static void main(String[] args) {
 	while(count == 0)
 	{
 		System.out.println("Enter Choice: ");
-		System.out.println("1. Add Contact , 2. Edit Contact , 3. Delete Contact , 4. Show Contacts , 5. Search By City  , 6. Search By State ,  7. View Persons  ,8. Count Persons, 9. Sort By Names , 10. Sort By City , State Or Zip  ,  11. Exit");
+		System.out.println("1. Add Contact , 2. Edit Contact , 3. Delete Contact , 4. Show Contacts , 5. Search By City  , 6. Search By State ,  7. View Persons  ,8. Count Persons, 9. Sort By Names , 10. Sort By City , State Or Zip  , 11. Read File   12 Write File  13. Exit");
 		int choice = sc.nextInt();
 		switch(choice) {
 		case 1:
@@ -289,6 +335,12 @@ public static void main(String[] args) {
 			ab.sortByCityStateZip();
 			break;
 		case 11 :
+			ab.readFile(sc, ab);
+			break;
+		case 12 :
+			ab.writeAddressBookData(IOService.CONSOLE_IO);
+			break;
+		case 13: 
 			count = 1;
 			break;
 		default:
